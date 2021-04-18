@@ -60,7 +60,7 @@ void enqueue(Queue<T> &q, const T &value, int priority) {
     q.tail = newElement;
   } else{
     ElementPtr<T> pRev = nullptr;
-    ElementPtr<T> pHelp = nullptr;
+    ElementPtr<T> pHelp = q.head;
 
     while(newElement->priority <= pRev->priority){
       if(pRev->next == nullptr)
@@ -113,8 +113,6 @@ void dequeue(Queue<T> &q) {
     q.head = q.head->next;
     delqueue->next = nullptr;
   }
-
-  delete(delqueue);
 }
 
 }  // namespace priority_queue
