@@ -68,15 +68,15 @@ void enqueue(Queue<T> &q, const T &value, int priority) {
       pRev = pHelp;
       pHelp = pHelp->next;
     }
-    if(pRev == q.head && newElement->priority > pRev->priority){
-      newElement->next = pRev;
+    if(pHelp == q.head && newElement->priority > pHelp->priority) {
+      newElement->next = pHelp;
       q.head = newElement;
-    } else if(pRev == q.tail && newElement->priority < pRev->priority){
-      pRev->next = newElement;
+    } else if(pHelp == q.tail && newElement->priority < pHelp->priority) {
+      pHelp->next = newElement;
       q.tail = newElement;
     } else{
       pRev->next = newElement;
-      newElement->next = pRev;
+      newElement->next = pHelp;
     }
   }
 
