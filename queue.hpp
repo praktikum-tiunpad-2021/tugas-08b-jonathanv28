@@ -55,15 +55,16 @@ void enqueue(Queue<T> &q, const T &value, int priority) {
   newElement->priority = priority;
   newElement->next = nullptr;
 
+  ElementPtr<T> pRev = nullptr;
+
   if(q.head == nullptr && q.tail == nullptr){
     q.head = newElement;
     q.tail = newElement;
   } else{
-    ElementPtr<T> pRev = nullptr;
     ElementPtr<T> pHelp = q.head;
 
     while(newElement->priority <= pHelp->priority){
-      if(pRev->next == nullptr)
+      if(pHelp->next == nullptr)
         break;
       pRev = pHelp;
       pHelp = pHelp->next;
